@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap');
+
 :root {
     --red: #DA291C;
     --yellow: #FFD700;
@@ -35,6 +36,7 @@ header {
     justify-content: space-between;
     padding: 1rem;
 }
+
 header a {
     width: 100%;
     max-width: 250px;
@@ -42,8 +44,8 @@ header a {
 
 header a img {
     width: 100%;
-    max-width: 250px;
     height: auto;
+    object-fit: contain;
 }
 
 #cart {
@@ -51,7 +53,6 @@ header a img {
     width: 100%;
     max-width: 50px;
 }
-
 #cart .label {
     width: 2rem;
     height: 2rem;
@@ -71,7 +72,6 @@ nav {
     background-color: var(--red);
     display: flex;
 }
-
 nav a {
     color: var(--white);
     text-decoration: none;
@@ -81,25 +81,25 @@ nav a {
     text-transform: uppercase;
     transition: ease-in-out .4s;
 }
-
 nav a:hover {
     color: var(--yellow);
     border-color: var(--yellow);
 }
-
 nav a.active {
     background-color: var(--yellow);
     border-color: var(--black);
     color: var(--black);
 }
+nav a.active:hover {
+    color: var(--red);
+}
 
-main {
+main, #product-list {
     display: flex;
     flex-wrap: wrap;
     padding: 0 1rem;
     justify-content: space-between;
 }
-
 main h2 {
     width: 100%;
     display: block;
@@ -108,7 +108,7 @@ main h2 {
 }
 
 article.product-card {
-    background-color: var(--black);
+    background: var(--black);
     border-bottom: 1rem solid var(--green);
     width: 31%;
     overflow: hidden;
@@ -117,81 +117,94 @@ article.product-card {
     color: var(--white);
     margin-bottom: 2rem;
 }
-
 article.product-card > * {
     display: block;
     clear: both;
 }
-
 article.product-card img {
     width: 100%;
 }
-
 article.product-card a {
     color: var(--yellow);
     padding: .5rem 0;
+    text-decoration: none;
 }
-
 article.product-card h3 {
-    margin: .2rem, 0 .5rem 0;
+    margin: .2rem 0 .5rem 0;
     text-transform: uppercase;
 }
-
 article.product-card button {
-   background: var(--green);
-   color: var(--white);
-   font-family: 'Rubiks', sans-serif;
-   border: none;
-   padding: .5rem 1rem;
-   font-size: 1rem;
+    background: var(--green);
+    color: var(--white);
+    font-family: 'Rubik', sans-serif;
+    border: none;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+}
+article.product-card button[disabled], 
+article.product-card button:disabled {
+    background-color: #ccc;
 }
 
 #cartview {
-    width: 100%;
-    max-width: 500px;
-    background-color: var(--black);
+    background: var(--black);
+    border-left: .5rem solid var(--green);
+    border-bottom: .5rem solid var(--green);
     color: var(--white);
+    padding: 1rem;
     position: absolute;
     right: 0;
     top: 70px;
-    border-left: .5rem solid var(--green);
-    border-bottom: .5rem solid var(--green);
-    padding: 1rem;
-    transition: ease-in-out .5s;
+    min-height: 100px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    transition: ease-in-out .4s;
 }
-
 #cartview ul {
     list-style-type: none;
     padding: 0;
 }
-
-#cartview ul li {
-    border-bottom: 1px solid var(--green);
-    padding-bottom: .5rem;
-    margin-bottom: .5rem;
-    display: block;
+#cartview li {
+    width: 100%;
+    display: flex;
     clear: both;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--green);
+    margin-bottom: .5rem;
+    transition: ease-in-out .7s;
 }
-
-#cartview ul li > * {
-    box-sizing: border-box;
+#cartview span {
     display: inline-block;
+    box-sizing: border-box;
 }
-
-span.title {
-    width: calc(100% - 9rem);
+#cartview .title {
+    width: calc(100% - 11rem);
 }
-
-span.price, span.quantity {
-    width: 3rem;
+#cartview .price {
+    width: 2rem;
 }
-button.delete {
+#cartview .quantity {
+    display: flex;
+    margin: 0 .5rem;
+}
+#cartview .quantity button {
+    font-size: 1.5rem;
+}
+#cartview .quantity input {
+    width: 2rem;
+    font-size: 1rem;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+}
+#cartview .delete {
     width: 2rem;
     height: 2rem;
+    background: var(--red);
     border-radius: 50%;
-    background-color: var(--red);
-    border: none;
     color: var(--white);
+    text-align: center;
+    padding-top: 5px;
 }
 
 .hidden {
